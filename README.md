@@ -1,4 +1,4 @@
-# juqery.danmu.js
+# jquery.danmu.js
 jQuery弹幕插件，Web前端弹幕插件。
 
 完整文档及Demo地址：http://www.liyawei.cn/danmu/
