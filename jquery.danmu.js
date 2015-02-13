@@ -85,7 +85,7 @@
 								 });
 						$(element).data("bottomspace",$(element).data("bottomspace")+options.font_size_big);
 						$('#'+bottom_tmp_name).fadeTo(options.top_botton_danmu_time,$(element).data("opacity"),function(){
-							$("#"+bottom_tmp_name).remove();
+							$(this).remove();
 							$(element).data("bottomspace",$(element).data("bottomspace")-options.font_size_big)
 						}
 						);
