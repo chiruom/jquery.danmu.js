@@ -76,7 +76,7 @@ top_botton_danmu_time:4000 //顶端底端弹幕持续时间 } );</code></pre>
  通过控制好弹幕div的left、top、height、width、zindex属性，可以让弹幕正好悬浮于html视频之上，就如Demo中的那样。
 </li>
 <li>
-在用户发弹幕是，可以在前端生成两个danmu对象，一个是有isnew属性的，即时使用add_danmu方法添加弹幕。另一个是没有isnew属性的，使用ajax技术写入数据库。
+在用户发弹幕时，可以在前端生成两个danmu对象，一个是有isnew属性的，即时使用add_danmu方法添加弹幕。另一个是没有isnew属性的，使用ajax技术写入数据库。
 </li>
 </ol>
 <h3>许可</h3>
