@@ -10,7 +10,7 @@ jQuery弹幕插件，Web前端弹幕插件。
 
 <h3>用法</h3>
 
-            <p>
+<p>
               <ol>
             <li>不用多说，第一步要引入js文件，把jquery.danmu.js和jQuery一起引用。
 <pre><code class="language-html">&lt;script src=&quot;danmu/jquery-1.11.1.min.js&quot;&gt;&lt;/script&gt; 
