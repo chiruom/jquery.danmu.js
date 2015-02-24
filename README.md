@@ -70,6 +70,15 @@ top_botton_danmu_time:4000 //顶端底端弹幕持续时间 } );</code></pre>
 </ol>
 <h3>Demo</h3>
 <p>请访问http://www.liyawei.cn/danmu/  上面有个Demo,并做到了与html5 video的结合</p> 
+<h3>推荐的方法</h3>
+<ol>
+<li>
+ 通过控制好弹幕div的left、top、height、width、zindex属性，可以让弹幕正好悬浮于html视频之上，就如Demo中的那样。
+</li>
+<li>
+在用户发弹幕是，可以在前端生成两个danmu对象，一个是有isnew属性的，即时使用add_danmu方法添加弹幕。另一个是没有isnew属性的，使用ajax技术写入数据库。
+</li>
+</ol>
 <h3>许可</h3>
 <p>你可以随意使用本项目，只需要在您的项目中添加这么一行注释：<br>
 jQuery.danmu.js (//github.com/chiruom/danmu/) - Licensed under the MIT license</p> 
