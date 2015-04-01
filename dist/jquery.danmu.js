@@ -222,7 +222,7 @@ var cyntax = {
 
 
 /*!
- *弹幕功能核心
+ *弹幕引擎核心
  *
  * Copyright 2015 by Liyawei Of AcGit.cc 
  * @license MIT
@@ -249,24 +249,26 @@ var cyntax = {
 		"left":this.options.left,
 		"top":this.options.top,
 		"width":this.options.width,
-		"height":this.options.height.toString()+"px",
+		"height":this.options.height,
 		"z-index":this.options.zindex,
 		"color":options.default_font_color,
-		"font-family":"Microsoft YaHei" ,
+		"font-family":"SimHei" ,
 		"font-size":options.font_size_big,
 		"overflow":"hidden"
 	});
-
-	var row_conut=parseInt(options.height/options.font_size_big);
+    var heig=this.$element.height();
+	var row_conut=parseInt(heig/options.font_size_big);
 	var rows_used=new Array();
 
-	$("<div class='timer'></div>").appendTo(this.$element );
-	this.$timer=$(".timer");
+	$("<div class='timer71452'></div>").appendTo(this.$element );
+	this.$timer=$(".timer71452");
 	this.$timer.timer({
 		delay: 100,
 		repeat: options.sumtime,
 		autostart: false,
 		callback: function( index ) {
+			heig=$(element).height();
+			//row_conut=parseInt(heig/options.font_size_big);
 			if($(element).data("danmu_array")[$(element).data("nowtime")]){
 				var danmus=$(element).data("danmu_array")[$(element).data("nowtime")];
 				for(var i=0;i<danmus.length;i++){
@@ -275,15 +277,20 @@ var cyntax = {
 					$("#linshi").text(danmus[i].text);
 					$("#linshi").css({
 						"color":danmus[i].color
-						,"text-shadow":" 2px 2px 2px #000000"
+						,"text-shadow":" 0px 0px 2px #000000"
 						,"-moz-opacity":$(element).data("opacity")
 						,"opacity": $(element).data("opacity")
 						,"white-space":"nowrap"
+						,"font-weight":"bold"
 					});
+					if (danmus[i].color<"#777777")
+						$("#linshi").css({
+							"text-shadow":" 0px 0px 2px #FFFFFF"
+						});
 					if (danmus[i].hasOwnProperty('isnew')){
 						$("#linshi").css({"border":"2px solid "+danmus[i].color});
 					}
-					if( danmus[i].size == 1)  $("#linshi").css("font-size",options.font_size_big);
+					if( danmus[i].size == 0)  $("#linshi").css("font-size",options.font_size_small);
 					if  ( danmus[i].position == 0){
 						//var top_local=parseInt(30+(options.height-60)*Math.random());//随机高度
 						var row = parseInt(row_conut*Math.random());
@@ -294,6 +301,7 @@ var cyntax = {
 						//console.log(rows_used.length);
 						if (rows_used.length==row_conut){
 							rows_used =new Array();
+							row_conut=parseInt(heig/options.font_size_big);
 						}
 						var top_local=(row)*options.font_size_big;
 
@@ -301,7 +309,7 @@ var cyntax = {
 										,"top":top_local
 										,"left":options.width
 										 });
-						var fly_tmp_name="fly"+parseInt(options.height*Math.random()).toString();	
+						var fly_tmp_name="fly"+parseInt(heig*Math.random()).toString();	
 						$("#linshi").attr("id",fly_tmp_name);
 						$('#'+fly_tmp_name).animate({left:-$(this).width()*3,},options.speed
 							,function(){$(this).remove();}	
@@ -356,14 +364,14 @@ Danmu.DEFAULTS = {
 		height: 360,
 		width: 640,
 		zindex :100,
-		speed:5000,
+		speed:20000,
 		sumtime:65535	,
 		danmuss:{},
 		default_font_color:"#FFFFFF",
-		font_size_small:24,
-		font_size_big:28,
-		opacity:"0.7",
-		top_botton_danmu_time:4000
+		font_size_small:16,
+		font_size_big:24,
+		opacity:"0.9",
+		top_botton_danmu_time:6000
 	}
 
 
@@ -385,7 +393,6 @@ Danmu.prototype.danmu_stop = function(){
 Danmu.prototype.danmu_pause = function(){
 	this.$timer.timer('pause');
 	$('.flying').pause();
-	//$(':animated').pause();
 	this.$element.data("paused",1);
 };
 
@@ -394,6 +401,11 @@ Danmu.prototype.danmu_resume = function(){
 	this.$timer.timer('resume');
 	$('.flying').resume();
 	this.$element.data("paused",0);
+};
+
+Danmu.prototype.danmu_hideall= function(){
+	$('.flying').remove();
+
 };
 
 Danmu.prototype.add_danmu = function(arg){
