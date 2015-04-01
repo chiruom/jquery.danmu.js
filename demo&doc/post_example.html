@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="assets/js/highlight/styles/monokai.css">
+<script src="assets/js/highlight/highlight.pack.js"></script>
+
+
+<style>
+body {
+	  font-family: "Microsoft YaHei" ! important;
+	  line-height: 1em;
+	  font-color:#222;
+}
+	pre {
+	line-height: 2em;
+	  font-family: "Microsoft YaHei" ! important;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+<script>hljs.initHighlightingOnLoad();</script>
+<pre>
+用于存储弹幕的后端php网页示例:
+<code class="language-php">
+&lt;?php header('Content-type:text/html;charset=utf8');
+$conn = @ mysql_connect(&quot;localhost&quot;, &quot;root&quot;, &quot;&quot;) or die(&quot;datebase can`t been connected&quot;); //链接数据库，替换成自己的
+mysql_select_db(&quot;danmu&quot;, $conn); //选择弹幕列表所存放数据库，替换成自己的
+mysql_query(&quot;set names 'utf8'&quot;); // 设置编码
+$danmu=$_POST['danmu']; 
+//接受弹幕参数，接受参数后请做SQL防注入过滤。
+$sql=&quot;INSERT INTO `danmu` VALUES ('&quot;.$danmu.&quot;','')&quot;; $query=mysql_query
+//在这里弹幕所存放的数据表名称为danmu，该表只有一个text型字段，字段名名也为danmu
+($sql); 
+echo $danmu; 
+
+//注意，在大型的应用程序中，为了防止恶意刷弹幕，需进行单个IP或用户的次数限制等操作。
+?&gt;
+
+</code>
+</pre>
+
+</body>
+</html>

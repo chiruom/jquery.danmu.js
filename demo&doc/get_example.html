@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="assets/js/highlight/styles/monokai.css">
+<script src="assets/js/highlight/highlight.pack.js"></script>
+
+
+<style>
+body {
+	  font-family: "Microsoft YaHei" ! important;
+	  line-height: 1em;
+	  font-color:#222;
+}
+	pre {
+	line-height: 2em;
+	  font-family: "Microsoft YaHei" ! important;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+<script>hljs.initHighlightingOnLoad();</script>
+<pre>
+用于查询弹幕的后端php网页示例:
+<code class="language-php">
+&lt;?php header('Content-type:text/html;charset=utf8');
+$conn = @ mysql_connect(&quot;localhost&quot;, &quot;root&quot;, &quot;&quot;) or die(&quot;datebase can`t been connected&quot;); //链接数据库，替换成自己的
+mysql_select_db(&quot;danmu&quot;, $conn); //选择弹幕列表所存放数据库，替换成自己的
+mysql_query(&quot;set names 'utf8'&quot;); // 设置编码
+$sql=&quot;SELECT `danmu` FROM `danmu`&quot;;  //在这里弹幕所存放的数据表名称为danmu，该表只有一个text型字段，字段名名也为danmu
+$query=mysql_query($sql); //
+echo $danmu; echo &quot;[&quot;;   //数组的前中括号
+$first=0; 
+while($row=mysql_fetch_array($query)){ 
+if ($first) { 
+echo &quot;,&quot;;        //数组元素分隔符逗号，条件判断，数组前一个元素前不用逗号
+} 
+$first=1; 
+echo &quot;'&quot;.$row['danmu'].&quot;'&quot;;  //danmu对象（数据库里该字段每条记录都是一个text形式的弹幕对象）
+} 
+echo &quot;]&quot;;  //数组的后中括号
+
+?&gt; 
+</code>
+</pre>
+
+</body>
+</html>
