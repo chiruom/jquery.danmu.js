@@ -240,7 +240,7 @@ var cyntax = {
 		$(element).data("topSpace",0);
 		$(element).data("bottomSpace",0);
 		this.$element .css({
-			"position":"relative",
+			"position":"absolute",
 			"left":this.options.left,
 			"top":this.options.top,
 			"width":this.options.width,
@@ -404,7 +404,6 @@ var cyntax = {
         SubtitleProtection:false,
         positionOptimize:false
 	};
-
 
 
 	Danmu.prototype.danmuStart = function(){
