@@ -240,7 +240,7 @@ var cyntax = {
 		$(element).data("topSpace",0);
 		$(element).data("bottomSpace",0);
 		this.$element .css({
-			"position":"absolute",
+			"position":"relative",
 			"left":this.options.left,
 			"top":this.options.top,
 			"width":this.options.width,
@@ -392,7 +392,7 @@ var cyntax = {
 		height: 360,
 		width: 640,
 		zindex :100,
-		speed:7000,
+		speed:20000,
 		sumTime:65535,
         danmuLoop:false,
 		danmuList:{},
