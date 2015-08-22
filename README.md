@@ -18,8 +18,8 @@ jQuery.Danmu.js是一个让网页某div上运行弹幕效果的jQuery插件
 
 **1**.第一步引入本插件的js文件,需要和jQuery一起引用。
 ```html
-<script src="js/jquery-1.11.1.min.js"></script>;
-<script src="js/jquery.danmu.js.js"></script>;
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery.danmu.js.js"></script>
 ```
 _ _ _
 **2**.新建一个div，这里把id值设为danmu
