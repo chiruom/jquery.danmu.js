@@ -284,10 +284,14 @@ var cyntax = {
             me.rowCount = me.rowCount - 3;
         }
         this.rows = [];
+        this.topRows=[];
+        this.bottomRows=[];
         this.initRows = function (me) {
             // me.rowCount = parseInt(me.height / options.FontSizeBig);
             for (var i = 0; i < me.rowCount; i++) {
                 me.rows[i] = 0;
+                me.topRows[i]=0;
+                me.bottomRows[i]=0;
             }
 
         };
@@ -305,6 +309,21 @@ var cyntax = {
                 }
             }
             return result;
+        };
+        me.getTopRow = function (me) {
+            for(var i=0;i<me.topRows.length;i++){
+                if (me.topRows[i] == 0){
+                    return i;
+                }
+            }
+        };
+
+        me.getBottomRow = function (me) {
+            for(var i=0;i<me.bottomRows.length;i++){
+                if (me.bottomRows[i] == 0){
+                    return i;
+                }
+            }
         };
         me.checkRow = function (me) {
             for (var i in me.rows) {
@@ -419,6 +438,9 @@ var cyntax = {
                             else if (danmaku.position == 1) {
                                 var topTmpId = me.id + "top" + parseInt(10000 * Math.random()).toString();
                                 $("#" + me.id + "tempDanmaku").attr("id", topTmpId);
+                                var temRow=me.getTopRow(me);
+                                $(element).data("topSpace", options.FontSizeBig*temRow);
+                                me.topRows[temRow]=1;
                                 $("#" + topTmpId).css({
                                     "width": "100%"
                                     , "text-align": "center"
@@ -426,17 +448,20 @@ var cyntax = {
                                     , "top": ($(element).data("topSpace"))
                                     , "left": "0"
                                 });
-                                //$("#"+topTmpId).removeAttr("id");
-                                $(element).data("topSpace", $(element).data("topSpace") + options.FontSizeBig);
+                                $("#" + topTmpId).data("row",temRow);
                                 $("#" + topTmpId).fadeTo(options.topBottomDanmuTime, $(element).data("opacity"), function () {
+                                        me.topRows[$(this).data("row")]=0;
                                         $(this).remove();
-                                        $(element).data("topSpace", $(element).data("topSpace") - options.FontSizeBig);
+
                                     }
                                 );
                             }
                             else if (danmaku.position == 2) {
                                 var bottomTmpId = me.id + "bottom" + parseInt(10000 * Math.random()).toString();
                                 $("#" + me.id + "tempDanmaku").attr("id", bottomTmpId);
+                                var temRow=me.getBottomRow(me);
+                                $(element).data("bottomSpace", options.FontSizeBig*temRow);
+                                me.bottomRows[temRow]=1;
                                 $("#" + bottomTmpId).css({
                                     "width": options.width
                                     , "left": "0"
@@ -444,11 +469,10 @@ var cyntax = {
                                     , "position": "absolute"
                                     , "bottom": 0 + $(element).data("bottomSpace")
                                 });
-                                $(element).data("bottomSpace", $(element).data("bottomSpace") + options.FontSizeBig);
-                                //$("#"+bottomTmpId).removeAttr("id");
+                                $("#" + bottomTmpId).data("row",temRow);
                                 $("#" + bottomTmpId).fadeTo(options.topBottomDanmuTime, $(element).data("opacity"), function () {
+                                        me.bottomRows[$(this).data("row")]=0;
                                         $(this).remove();
-                                        $(element).data("bottomSpace", $(element).data("bottomSpace") - options.FontSizeBig)
                                     }
                                 );
 
