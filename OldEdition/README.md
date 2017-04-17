@@ -1,7 +1,7 @@
 # jquery.danmu.js
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-##jQuery弹幕插件
+## jQuery弹幕插件
 
 完整文档及Demo地址：http://www.liyawei.cn/danmu/
 
