@@ -299,7 +299,7 @@ function send_danmu() {
 
 **8**.如果你只需将弹幕用于视频，强烈建议你使用本项目的姊妹项目DanmuPlayer,它是个HTML5弹幕视频播放器
 
-项目地址： http://www/liyawei.cn/danmuplayer
+项目地址： http://www.liyawei.cn/danmuplayer
 
 
 
