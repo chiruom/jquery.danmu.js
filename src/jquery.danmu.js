@@ -606,7 +606,7 @@ var cyntax = {
     $.fn.danmu.Constructor = Danmu;
 	
 	function calcLeft(width) {
-		var areaWidth = $("#danmuarea").width();
+		var areaWidth = $("#danmu").width();
 		return ((areaWidth - width) / 2);
 	}
 
