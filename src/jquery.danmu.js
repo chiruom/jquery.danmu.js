@@ -441,12 +441,13 @@ var cyntax = {
                                 var temRow=me.getTopRow(me);
                                 $(element).data("topSpace", options.FontSizeBig*temRow);
                                 me.topRows[temRow]=1;
+								var tempWidth = $("#" + topTmpId).width();
+								var tempLeft = calcLeft(tempWidth) + "px";
                                 $("#" + topTmpId).css({
-									"width": "100%"
-                                    , "text-align": "center"
+									"text-align": "center"
                                     , "position": "absolute"
                                     , "top": ($(element).data("topSpace"))
-									, "left" : "0"
+									, "left" : tempLeft
                                 });
                                 $("#" + topTmpId).data("row",temRow);
                                 $("#" + topTmpId).fadeTo(options.topBottomDanmuTime, $(element).data("opacity"), function () {
@@ -461,9 +462,10 @@ var cyntax = {
                                 var temRow=me.getBottomRow(me);
                                 $(element).data("bottomSpace", options.FontSizeBig*temRow);
                                 me.bottomRows[temRow]=1;
+								var tempWidth = $("#" + bottomTmpId).width();
+								var tempLeft = calcLeft(tempWidth) + "px";
                                 $("#" + bottomTmpId).css({
-                                    "width": options.width
-                                    , "left": "0"
+									"left": tempLeft
                                     , "text-align": "center"
                                     , "position": "absolute"
                                     , "bottom": 0 + $(element).data("bottomSpace")
@@ -602,6 +604,11 @@ var cyntax = {
 
     $.fn.danmu = Plugin;
     $.fn.danmu.Constructor = Danmu;
+	
+	function calcLeft(width) {
+		var areaWidth = $("#danmuarea").width();
+		return ((areaWidth - width) / 2);
+	}
 
 
 })(jQuery);
