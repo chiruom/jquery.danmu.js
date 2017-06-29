@@ -442,17 +442,16 @@ var cyntax = {
                                 $(element).data("topSpace", options.FontSizeBig*temRow);
                                 me.topRows[temRow]=1;
                                 $("#" + topTmpId).css({
-                                    "width": "100%"
+									"width": "100%"
                                     , "text-align": "center"
                                     , "position": "absolute"
                                     , "top": ($(element).data("topSpace"))
-                                    , "left": "0"
+									, "left" : "0"
                                 });
                                 $("#" + topTmpId).data("row",temRow);
                                 $("#" + topTmpId).fadeTo(options.topBottomDanmuTime, $(element).data("opacity"), function () {
                                         me.topRows[$(this).data("row")]=0;
                                         $(this).remove();
-
                                     }
                                 );
                             }
